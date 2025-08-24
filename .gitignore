@@ -1,5 +1,10 @@
+# Zero Trust Architecture - .gitignore
+
+# ====================
+# Terraform
+# ====================
 # Local .terraform directories
-.terraform/
+**/.terraform/*
 
 # .tfstate files
 *.tfstate
@@ -9,29 +14,495 @@
 crash.log
 crash.*.log
 
-# Exclude all .tfvars files, which are likely to contain sensitive data, such as
-# password, private keys, and other secrets. These should not be part of version 
-# control as they are data points which are potentially sensitive and subject 
-# to change depending on the environment.
+# Exclude all .tfvars files, which are likely to contain sensitive data
 *.tfvars
 *.tfvars.json
 
-# Ignore override files as they are usually used to override resources locally and so
-# are not checked in
+# Ignore override files as they are usually used to override resources locally
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Ignore transient lock info files created by terraform apply
-.terraform.tfstate.lock.info
-
 # Include override files you do wish to add to version control using negated pattern
 # !example_override.tf
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
+*tfplan*
 
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# ====================
+# Kubernetes
+# ====================
+# Helm
+*.tgz
+charts/*/charts
+charts/*/requirements.lock
+
+# Kubernetes secrets (never commit secrets!)
+*secret*.yaml
+*secret*.yml
+*-secret.yaml
+*-secret.yml
+
+# Kubeconfig files
+kubeconfig
+kubeconfig.*
+*.kubeconfig
+config
+
+# ====================
+# HashiCorp Vault
+# ====================
+# Vault configuration files with sensitive data
+vault-config.json
+vault-config.hcl
+vault-init.json
+vault-unseal-keys.json
+
+# Vault data directory
+vault/data/
+vault/logs/
+
+# ====================
+# AWS
+# ====================
+# AWS CLI credentials
+.aws/credentials
+.aws/config
+
+# AWS SAM
+.aws-sam/
+
+# ====================
+# Environment & Secrets
+# ====================
+# Environment variables
+.env
+.env.local
+.env.*.local
+.environment
+
+# Secret files
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# SSL certificates (if not using cert-manager)
+certificates/
+certs/
+ssl/
+
+# SSH keys
+id_rsa
+id_ed25519
+*.ppk
+
+# GPG keys
+*.asc
+*.gpg
+
+# ====================
+# Docker
+# ====================
+# Docker compose override
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Docker volumes
+docker-volumes/
+
+# ====================
+# IDE & Editors
+# ====================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# ====================
+# macOS
+# ====================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ====================
+# Windows
+# ====================
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# ====================
+# Linux
+# ====================
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# ====================
+# Logs
+# ====================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ====================
+# Monitoring & Observability
+# ====================
+# Prometheus data
+prometheus/data/
+prometheus-data/
+
+# Grafana data
+grafana/data/
+grafana-data/
+grafana.db
+
+# Jaeger data
+jaeger-data/
+
+# ====================
+# Testing
+# ====================
+# Test results
+test-results/
+coverage/
+*.cover
+*.py,cover
+.nyc_output
+
+# pytest
+.pytest_cache/
+.cache
+
+# ====================
+# Backup files
+# ====================
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+
+# ====================
+# Compressed files
+# ====================
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# ====================
+# Application specific
+# ====================
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Go
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+#
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+
+# ====================
+# Security & Compliance
+# ====================
+# Security scan results
+security-scan-results/
+vulnerability-reports/
+*.sarif
+
+# Compliance reports
+compliance-reports/
+audit-logs/
+
+# ====================
+# CI/CD
+# ====================
+# Build artifacts
+build/
+dist/
+target/
+
+# CI/CD temporary files
+.ci/
+.github/workflows/temp/
+
+# ====================
+# Documentation
+# ====================
+# Generated documentation
+site/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# ====================
+# Local development
+# ====================
+# Local configuration overrides
+local.yaml
+local.yml
+local.json
+dev-override.*
+
+# Local data directories
+local-data/
+dev-data/
+
+# Local scripts (if they contain sensitive info)
+local-scripts/
+
+# ====================
+# Temporary directories
+# ====================
+tmp/
+temp/
+.tmp/
+.temp/
+
+# ====================
+# Performance and profiling
+# ====================
+*.prof
+*.mem
+*.cpu
+
+# ====================
+# Database files
+# ====================
+*.db
+*.sqlite
+*.sqlite3
+
+# ====================
+# Cache directories
+# ====================
+.cache/
+cache/
+.npm/
+.yarn/
+
+# ====================
+# Custom additions for this project
+# ====================
+# Vault unseal keys (NEVER commit these!)
+vault-unseal-keys.txt
+vault-root-token.txt
+vault-recovery-keys.txt
+
+# Keycloak admin credentials
+keycloak-admin-password.txt
+keycloak-realm-export.json
+
+# Generated certificates (if not using cert-manager)
+generated-certs/
+manual-certs/
+
+# Configuration backups with sensitive data
+config-backup-*/
+*-backup.yaml
+*-backup.yml
+
+# Load balancer configurations with sensitive data
+lb-config/
+ingress-config-generated/
+
+# Service mesh certificates (auto-generated)
+istio-certs/
+service-mesh-certs/
+
+# OPA policy test results
+policy-test-results/
+opa-test-output/
+
+# Monitoring configuration with auth tokens
+monitoring-config-with-secrets/
+grafana-admin-credentials.txt
+prometheus-basic-auth.txt
+
+# Performance test results
+performance-test-results/
+load-test-output/
+
+# Security assessment reports
+pentest-results/
+security-assessment-*.pdf
+
+# Local development certificates
+dev-certs/
+localhost.crt
+localhost.key
+
+# Terraform state backups with potentially sensitive data
+terraform.tfstate.backup.*
+*.tfstate.backup
+
+# ====================
+# Project-specific exclusions
+# ====================
+# Demo data and examples with real credentials
+examples/with-real-secrets/
+demo-with-production-data/
+
+# Personal notes and documentation
+PERSONAL_NOTES.md
+TODO.md
+personal-todo.txt
+
+# Local development overrides
+.local/
+local-overrides/
+
+# Benchmark results with infrastructure details
+benchmarks/detailed-results/
+performance-data/
+
+# ====================
+# End of .gitignore
+# ====================
